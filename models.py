@@ -11,9 +11,9 @@ class Professor(Base):
 
     #属性の作成
     id = Column(Integer, Primary_kay=True, Index=True)
-    name = Column(String, Index=True)
     email = Column(String, Unique=True, Index=True)
-    hashed_password = Column(String)
+    name = Column(String, Index=True)    
+    password = column(String)   #hashed_password = Column(String)
     is_active = Column(Boolean,default=True)
 
     #関係を作成(講義モデルとの関係)
