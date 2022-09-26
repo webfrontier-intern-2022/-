@@ -10,9 +10,9 @@ class Course(ModelBase):
     __tablename__ = "courses"
 
     #属性の作成
-    id = Column(Integer, Index=True, Primary_Key=True)
-    s_id = Column(Integer, ForeignKey("Student.id", Index=True))
-    p_id = Column(Integer, ForeignKey("Lecture.id", Index=True))
+    id = Column("course_id", Integer, primary_Key=True)
+    s_id = Column("s_id", Integer, ForeignKey("Student.id", index=True))
+    l_id = Column("l_id", Integer, ForeignKey("Lecture.id", index=True))
 
     #関係を作成(学生モデルと講義モデルとの関係)
     course_student = relationship("students",back_populates="take_course")

@@ -7,10 +7,10 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
-from models.models_professor import models_professor
-from models.models_students import models_students
-from models.models_lecture import models_lecture
-from models.models_course import models_course
+from models.models_professor import Professor
+from models.models_students import Student
+from models.models_lecture import Lecture
+from models.models_course import Course
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

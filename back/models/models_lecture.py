@@ -10,10 +10,10 @@ class Lecture(ModelBase):
     __tablename__ = "lectures"
 
     #属性の作成
-    id = Column(Integer, Index=True, Primary_key=True)
-    name = Column(String, Index=True)
-    description = Column(String, Unique=True, Index=True)
-    p_id = Column(Integer, ForeignKey("professor.id", Index=True))
+    l_id = Column("l_id", Integer, primary_key=True)
+    name = Column("name", String, index=True)
+    description = Column("description", String, unique=True, index=True)
+    p_id = Column("p_id", Integer, ForeignKey("professor.id"))
 
     #関係を作成(教授モデルや履修モデルとの関係)
     owner = relationship("Professor", back_populates="lectures")
