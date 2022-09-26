@@ -1,16 +1,16 @@
-from sqlalchemy import Boolean, column, ForeignKey, Integer, String
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
-#database.pyからBaseクラスをインポート
-from .database import Base
+#model.pyからModelBaseクラスをインポート
+from model import ModelBase
 
 # SQLAlchemyモデルでクラスを作成
 # 学生モデル
-class Student(Base):
+class Student(ModelBase):
     __tablename__ = "students"
 
     #属性の作成
-    id = Column(Integer, Primary_kay=True, Index=True)
+    id = Column(Integer, Index=True, Primary_kay=True)
     name = Column(String, Index=True)
     email = Column(String, Unique=True, Index=True)
     hashed_password = Column(String)
