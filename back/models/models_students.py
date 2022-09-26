@@ -10,7 +10,7 @@ class Student(ModelBase):
     __tablename__ = "students"
 
     #属性の作成
-    id = Column(Integer, Index=True, Primary_kay=True)
+    id = Column(Integer, Index=True, Primary_key=True)
     name = Column(String, Index=True)
     email = Column(String, Unique=True, Index=True)
     hashed_password = Column(String)
