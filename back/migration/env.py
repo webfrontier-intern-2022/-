@@ -7,6 +7,7 @@ from sqlalchemy import engine_from_config
 from sqlalchemy import pool
 
 from alembic import context
+from settings import Engine
 from models.models_professor import Professor
 from models.models_students import Student
 from models.models_lecture import Lecture
@@ -63,9 +64,10 @@ def run_migrations_online():
     and associate a connection with the context.
 
     """
-    url = config.get_main_option("sqlalchemy.url")
     connectable = Engine
 
+    url = config.get_main_option("sqlalchemy.url")
+    
     with connectable.connect() as connection:
         context.configure(
             url=url,

@@ -2,7 +2,7 @@ from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
 #model.pyからModelBaseクラスをインポート
-from model import ModelBase
+from settings import ModelBase
 
 # SQLAlchemyモデルでクラスを作成
 # 講義モデル
@@ -11,8 +11,8 @@ class Lecture(ModelBase):
 
     #属性の作成
     l_id = Column("l_id", Integer, primary_key=True)
-    name = Column("name", String, index=True)
-    description = Column("description", String, unique=True, index=True)
+    name = Column("name", String(255), index=True)
+    description = Column("description", String(255), unique=True, index=True)
     p_id = Column("p_id", Integer, ForeignKey("professor.id"))
 
     #関係を作成(教授モデルや履修モデルとの関係)

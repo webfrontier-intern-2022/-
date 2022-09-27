@@ -6,25 +6,24 @@ from models import models_professor
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 pwd_context.hash("password")
 
-def get_user_by_email(db: Session, email: str):
-    return db.query(models.user).filter(models.users.email == email).first()
+def get_professor_by_email(db: Session, email: str):
+    return db.query(models_professor.Professor).filter(models_professor.Professor.email == email).first()
 
-def get_user_by_password(db: Session, password: str):
-    return db.query(models.user).filter(models.users.password == password).first()
+def get_professor_by_password(db: Session, password: str):
+    return db.query(models_professor.Professor).filter(models_professor.Professor.password == password).first()
 
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
 
-def authenticate_user(
+def authenticate_professor(
         db: Session,
         email: str,
-        password: str,
-        expire: int,
-        reuse: bool):
-    user = get_user_by_email(db, email)
-    if not user:
+        password: str
+    ):
+    professor = get_professor_by_email(db, email)
+    if not professor:
         return False
-    if not verify_password(plain_password, user.hashed_password):
+    if not verify_password(plain_password, professor.hashed_password):
         return False
     return True
 
